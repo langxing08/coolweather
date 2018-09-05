@@ -53,7 +53,7 @@ public class WeatherActivity extends AppCompatActivity {
             // 获取当前活动的DecorView
             View decorView = getWindow().getDecorView();
             // 设置活动的布局显示在状态栏上面
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             // 设置状态栏为透明色
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
