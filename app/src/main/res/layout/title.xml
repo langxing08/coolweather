@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--头布局-->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
 
+    <!--居左, 用于切换城市-->
     <Button
         android:id="@+id/nav_button"
         android:layout_width="30dp"
@@ -14,6 +16,7 @@
         android:background="@drawable/ic_home"
         />
 
+    <!--居中显示城市名-->
     <TextView
         android:id="@+id/title_city"
         android:layout_width="wrap_content"
@@ -22,6 +25,7 @@
         android:textColor="#fff"
         android:textSize="20sp" />
 
+    <!--居右显示更新时间-->
     <TextView
         android:id="@+id/title_update_time"
         android:layout_width="wrap_content"

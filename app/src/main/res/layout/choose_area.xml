@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fff">
 
+    <!--标题栏-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -19,6 +20,7 @@
             android:textColor="#fff"
             android:textSize="20sp" />
 
+        <!--返回按钮-->
         <Button
             android:id="@+id/back_button"
             android:layout_width="25dp"
@@ -30,6 +32,7 @@
 
     </RelativeLayout>
 
+    <!--ListView用于显示省市县数据; ListView可以自动给每个子项之间添加一条分隔线-->
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"

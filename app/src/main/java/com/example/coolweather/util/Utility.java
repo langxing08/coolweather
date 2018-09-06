@@ -1,3 +1,6 @@
+/**
+ * 建立工具类, 用于解析和处理JSON格式数据
+ */
 package com.example.coolweather.util;
 
 import android.text.TextUtils;
@@ -26,7 +29,7 @@ public class Utility {
                     Province province = new Province();
                     province.setProvinceName(provinceObject.getString("name"));
                     province.setProvinceCode(provinceObject.getInt("id"));
-                    province.save();
+                    province.save();  // 存储到数据库
                 }
                 return true;
             } catch (JSONException e) {

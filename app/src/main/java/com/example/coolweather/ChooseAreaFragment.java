@@ -53,35 +53,15 @@ public class ChooseAreaFragment extends Fragment {
 
     private List<String> dataList = new ArrayList<>();
 
-    /**
-     * 省列表
-     */
-    private List<Province> provinceList;
 
-    /**
-     * 市列表
-     */
-    private List<City> cityList;
+    private List<Province> provinceList;// 省列表
+    private List<City> cityList;        // 市列表
+    private List<County> countyList;    // 县列表
 
-    /**
-     * 县列表
-     */
-    private List<County> countyList;
+    private Province selectedProvince;  // 选中的省份
+    private City selectedCity;          // 选中的城市
 
-    /**
-     * 选中的省份
-     */
-    private Province selectedProvince;
-
-    /**
-     * 选中的城市
-     */
-    private City selectedCity;
-
-    /**
-     * 当前选中的级别
-     */
-    private int currentLevel;
+    private int currentLevel;           // 当前选中的级别
 
     @Nullable
     @Override
@@ -116,12 +96,12 @@ public class ChooseAreaFragment extends Fragment {
                     if (getActivity() instanceof MainActivity) {
                         Intent intent = new Intent(getActivity(), WeatherActivity.class);
                         intent.putExtra("weather_id", weatherId);
-                        startActivity(intent);
+                        startActivity(intent);  // 启动WeatherActivity, 并传递当前选中县的天气id
                         getActivity().finish();
                     } else if (getActivity() instanceof  WeatherActivity) {
                         WeatherActivity activity = (WeatherActivity) getActivity();
-                        activity.drawerLayout.closeDrawers();
-                        activity.swipeRefresh.setRefreshing(true);
+                        activity.drawerLayout.closeDrawers();  // 关闭滑动菜单
+                        activity.swipeRefresh.setRefreshing(true);  // 显示下拉刷新进度条
                         activity.requestWeather(weatherId);
                     }
                 }
@@ -146,8 +126,8 @@ public class ChooseAreaFragment extends Fragment {
      * 查询全国所有的省, 优先从数据库查询, 如果没有再去服务器上查询
      */
     private void queryProvinces() {
-        titleText.setText("中国");
-        backButton.setVisibility(View.GONE);
+        titleText.setText("中国");  // 设置头布局的标题为“中国”
+        backButton.setVisibility(View.GONE);  // 隐藏返回按钮
 
         provinceList = DataSupport.findAll(Province.class);
         if (provinceList.size() > 0) {
@@ -218,6 +198,7 @@ public class ChooseAreaFragment extends Fragment {
      */
     private void queryFromServer(String address, final String type) {
         showProgressDialog();
+
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
@@ -231,6 +212,7 @@ public class ChooseAreaFragment extends Fragment {
                     result = Utility.handleCountyResponse(responseText, selectedCity.getId());
                 }
                 if (result) {
+                    // 通过runOnUiThread()方法回到主线程处理逻辑
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

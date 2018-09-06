@@ -24,9 +24,6 @@ public class AutoUpdateService extends Service {
 
     private static final String TAG = "AutoUpdateService";
 
-    public AutoUpdateService() {
-    }
-
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -46,6 +43,8 @@ public class AutoUpdateService extends Service {
         manager.cancel(pi);
         manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
 
+        Log.d(TAG, "onStartCommand: ");
+
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -53,6 +52,9 @@ public class AutoUpdateService extends Service {
      * 更新天气信息
      */
     private void updateWeather() {
+
+        Log.d(TAG, "updateWeather: ");
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather", null);
         if (weatherString != null) {

@@ -1,3 +1,6 @@
+/**
+ * 与服务器交互, 获取全国所有的省市县数据
+ */
 package com.example.coolweather.util;
 
 import okhttp3.OkHttpClient;
